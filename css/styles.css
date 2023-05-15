@@ -1,0 +1,70 @@
+html{height:100%;}
+body{
+    margin:0;
+    height:100%;
+    background-image: url('bg2.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;}
+.carousel {margin:50px 0px;width:90%;border:2px solid rgb(53, 16, 0);box-shadow: 9px 9px 9px rgb(123, 76, 54);}
+h1 {
+   font-size:30px;
+   padding-left:20px;}
+nav {font-size:20px;}
+a:hover {
+   cursor:pointer;
+   opacity:0.60;}
+.heading {
+   color:sienna;}
+.body {
+   padding-left:60px;}
+.navbar { padding:20px 0;color:black;margin:0 20px;border-bottom:2px solid rgb(239, 183, 86); display:flex;flex-wrap:wrap; justify-content: space-between;}
+.card {background-color: rgb(123, 76, 54);width: 16rem; color:white; margin:20px;}
+hr {
+   border: 2px solid rgb(163, 65, 16);}
+ #main-title {
+    font-size:65px;
+    text-align: center;
+    margin:40px auto;
+    width:70%;}
+.products {
+   margin-bottom:30px;
+   display:flex;
+   flex-wrap: wrap;
+   justify-content:space-around;}
+.products-item {
+   display:flex;
+   flex-wrap:wrap;
+   justify-content:space-around;
+   margin:20px;
+}
+ .card .text-center .text-bg-primary .mb-3 img {
+   height:200px;}
+ .button {
+   display:flex;
+   margin:0px 60px;
+   width:100px;
+   height:45px;
+   border-radius: 9%;
+   background-color: rgb(194, 133, 73);
+   justify-content:center;
+   align-items:center;
+   color:white}
+footer {
+   font-size:25px;
+   height: 100px;
+   width: 100%;
+   background-color:rgb(53, 16, 0);
+   color:white;
+   display:flex;
+   align-items: center;
+   justify-content: center;}
+#insta{
+   margin-left:20px;
+   margin-bottom:10px;
+   height: 1cm;
+   width: 1cm;}
+.contact {margin:30px;}
+.aboutus {display:flex; flex-wrap:wrap;justify-content:center;}
+.People img {margin:35px 7px; padding:6px; width:250px;height:250px;}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hangman Game</title>
+</head>
+<body>
+  <h1>Hangman Game</h1>
+  <p>Guess the word:</p>
+  <p id="word"></p>
+  <p>Letters guessed: <span id="lettersGuessed"></span></p>
+  <p>Chances remaining: <span id="chances"></span></p>
+  <input type="text" id="guessInput" placeholder="Enter a letter">
+  <button id="guessButton">Guess</button>
+  <script>
+    const array = ["apple", "game", "confectionery", "phone", "retake"];
+    const maxChances = 5;
+    let word = '';
+    let guessedLetters = [];
+    let chances = maxChances;
+
+    function initializeGame() {
+      word = array[Math.floor(Math.random() * array.length)];
+      guessedLetters = [];
+      chances = maxChances;
+
+      updateWordDisplay();
+      updateLettersGuessed();
+      updateChancesDisplay();
+    }
+
+    function updateWordDisplay() {
+      const wordElement = document.getElementById('word');
+      let displayWord = '';
+      for (const letter of word) {
+        if (guessedLetters.includes(letter)) {
+          displayWord += letter;
+        } else {
+          displayWord += '_';
+        }
+        displayWord += ' ';
+      }
+      wordElement.textContent = displayWord;
+    }
+
+    function updateLettersGuessed() {
+      const lettersGuessedElement = document.getElementById('lettersGuessed');
+      lettersGuessedElement.textContent = guessedLetters.join(', ');
+    }
+
+    function updateChancesDisplay() {
+      const chancesElement = document.getElementById('chances');
+      chancesElement.textContent = chances;
+    }
+
+    function handleGuess() {
+      const guessInput = document.getElementById('guessInput');
+      const guess = guessInput.value.toLowerCase();
+      guessInput.value = '';
+
+      if (guess.length !== 1 || guessedLetters.includes(guess)) {
+        return; 
+      }
+
+      guessedLetters.push(guess);
+
+      if (!word.includes(guess)) {
+        chances--;
+      }
+
+      updateWordDisplay();
+      updateLettersGuessed();
+      updateChancesDisplay();
+
+      checkGameStatus();
+    }
+
+    function checkGameStatus() {
+      const wordElement = document.getElementById('word');
+      const chancesElement = document.getElementById('chances');
+
+      if (wordElement.textContent.includes('_')) {
+        if (chances === 0) {
+          wordElement.textContent = 'You lost! The word was: ' + word;
+        }
+      } else {
+        wordElement.textContent = 'Congratulations! You guessed the word: ' + word;
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', initializeGame);
+
+    const guessButton = document.getElementById('guessButton');
+    guessButton.addEventListener('click', handleGuess);
+  </script>
+</body>
+</html>
