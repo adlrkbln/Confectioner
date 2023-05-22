@@ -54,10 +54,33 @@
                             <label for="exampleFormControlTextarea1" class="form-label">Your message</label>
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                           </div>
-                        <button type="button" class="btn btn-secondary">Send a message</button>                    
                     </form>
+                    <button id="myBtn" class="btn btn-secondary">Send a message</button>
+                        <div id="myModal" class="modal">
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                <h4 style="margin-left:50px">Message sent!</h4>
+                            </div>
+                        </div>
+                        <script>
+                        var modal = document.getElementById("myModal");
+                            var btn = document.getElementById("myBtn");
+                            var span = document.getElementsByClassName("close")[0];
+                            btn.onclick = function() {
+                              modal.style.display = "block";
+                            }
+                            span.onclick = function() {
+                              modal.style.display = "none";
+                              location.reload();
+                            }
+                            window.onclick = function(event) {
+                              if (event.target == modal) {
+                                modal.style.display = "none";
+                                location.reload();
+                              }
+                            }
+                        </script>
                 </div>
-                
             </div>
         </section>
     </main>
@@ -68,6 +91,7 @@
               <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="insta" id="insta">
             </a>
         </div>
+        <h5>Do you want to play a <a href="game.html" style="color:white">game</a>?</h5>
     </footer>
 </body>
 </html>
