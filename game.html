@@ -1,16 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Hangman Game</title>
+    <title>Hangman game</title>
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="css/styles.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="logo.png">
 </head>
 <body>
-  <h1>Hangman Game</h1>
-  <p>Guess the word:</p>
+  <header>
+    <nav class="navbar navbar-expand navbar-light bg-body-tertiary">
+        <div>
+            <a href="index.html"><img src="logo.png" height="60px;" width="auto;"></a>
+        </div>
+        <div>
+            <ul class="navbar-nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="About_us.html">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="Catalog.html">Catalog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="Contacts.html">Contacts</a>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <a class="a-main" href="Orders.html"><img src="shopping-cart.svg" height="40px" width="auto"></a>
+        </div>
+    </nav>
+</header>
+<main>
+  <div class="container-fluid">
+    <h1 style="margin:30px 0px;">Hangman Game</h1>
+    <p>Guess the word:</p>
   <p id="word"></p>
   <p>Letters guessed: <span id="lettersGuessed"></span></p>
   <p>Chances remaining: <span id="chances"></span></p>
   <input type="text" id="guessInput" placeholder="Enter a letter">
   <button id="guessButton">Guess</button>
+  <audio id="winSound">
+    <source src="trumpets.mp3" type="audio/mp3">
+  </audio>
+  <audio id="lostSound">
+    <source src="lost.mp3" type="audio/mp3">
+  </audio>
   <script>
     const array = ["apple", "game", "confectionery", "phone", "retake"];
     const maxChances = 5;
@@ -58,7 +93,7 @@
       guessInput.value = '';
 
       if (guess.length !== 1 || guessedLetters.includes(guess)) {
-        return; 
+        return;
       }
 
       guessedLetters.push(guess);
@@ -77,20 +112,38 @@
     function checkGameStatus() {
       const wordElement = document.getElementById('word');
       const chancesElement = document.getElementById('chances');
-
+      
       if (wordElement.textContent.includes('_')) {
         if (chances === 0) {
           wordElement.textContent = 'You lost! The word was: ' + word;
+          playLostSound();
         }
       } else {
         wordElement.textContent = 'Congratulations! You guessed the word: ' + word;
+        playWinSound();
       }
     }
-
+    function playWinSound() {
+      const winSound = document.getElementById('winSound');
+      winSound.play();
+    }
+    function playLostSound() {
+      const lostSound = document.getElementById('lostSound');
+      lostSound.play();
+    }
     document.addEventListener('DOMContentLoaded', initializeGame);
 
     const guessButton = document.getElementById('guessButton');
     guessButton.addEventListener('click', handleGuess);
+
+    const guessInput = document.getElementById('guessInput');
+    guessInput.addEventListener('keypress', function (event) {
+      if (event.key === 'Enter') {
+        handleGuess();
+      }
+    });
   </script>
+  </div>
+</main>
 </body>
 </html>
