@@ -5,6 +5,7 @@
     <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="css/styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="icon" type="image/x-icon" href="logo.png">
 </head>
 <body>
@@ -27,8 +28,13 @@
             </ul>
         </div>
         <div>
-            <a class="a-main" href="Orders.html"><img src="shopping-cart.svg" height="40px" width="auto"></a>
-        </div>
+          <a href="Orders.html">
+              <div class="cart">
+                <i class="bi bi-cart2"></i>
+                <div id="cartAmount" class="cartAmount">0</div>
+              </div>
+          </a>
+      </div>
     </nav>
 </header>
 <main>
@@ -146,4 +152,5 @@
   </div>
 </main>
 </body>
+<script src="src/Data.js"></script>
 </html>
